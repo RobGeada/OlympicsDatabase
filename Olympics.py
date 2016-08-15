@@ -89,11 +89,12 @@ for disc in allDisc:
     #iterate through individual olympics
     for olym in indivDisc:
         event= olym.split("href=")[1].split(">")[0][18:-6].split("/")
-        
+        weird = False
         #because the html format for 1956 equestrian is weird
         if event[0] == "ian":
             event = event[1:4]
-        
+        if event[0] == "2012" and event[1]=="SWI" and event[2]=="mens-200-metres-freestyle":
+            weird = True
         olym = olym.split('<td align="left"')[1:4]
         olym = [x.split(" title=") for x in olym]
         olymResults = []
@@ -101,13 +102,19 @@ for disc in allDisc:
         #iterate through individual medalists
         for medal in olym:
             if len(medal)>1:
-                medalCountry = medal[1].split(" height")[0][1:-1]
-                medalAth = medal[1].split('html">')
-                if len(medalAth)<2:
-                    medalAth = medalAth[0].split(">")[2].split("<")[0]
-                else:
-                    medalAth = medalAth[1].split("<")[0]
-                medal = (medalAth,medalCountry)
+                medalCountry,medalAthList = [],[]
+                for medallist in medal[1:]:
+                    medalCountry.append(medallist.split(" height")[0][1:-1])
+                    medalAth = medallist.split('html">')
+                    if len(medalAth)<2:
+                        medalAthList.append(medalAth[0].split(">")[2].split("<")[0])
+                    else:
+                        medalAthList.append(medalAth[1].split("<")[0])
+                if len(medalAthList)==1:
+                    medalCountry = medalCountry[0]
+                    medalAthList = medalAthList[0]
+                medal = (medalAthList,medalCountry)
+                print(medal)
             else:
                 medal = (None,None)
             olymResults.append(medal)
