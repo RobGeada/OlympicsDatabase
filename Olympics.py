@@ -123,7 +123,7 @@ for disc in allDisc:
 print("Writing data...")        
 f = open(cwd+"/results.csv","w")
 writer = csv.writer(f)
-writer.writerow(("Year","Sport","Discipline","Gold Medalist","Silver Medalist","Bronze Medalist","Gold Nation","Silver Nation","Bronze Nation"))
+writer.writerow(("Year","Sport","Discipline","Gold_Medalist","Silver_Medalist","Bronze_Medalist","Gold_Nation","Silver_Nation","Bronze_Nation"))
 for values in results:
     writer.writerow(values)
 f.close()        
