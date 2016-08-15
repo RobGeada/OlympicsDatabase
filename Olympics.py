@@ -114,7 +114,6 @@ for disc in allDisc:
                     medalCountry = medalCountry[0]
                     medalAthList = medalAthList[0]
                 medal = (medalAthList,medalCountry)
-                print(medal)
             else:
                 medal = (None,None)
             olymResults.append(medal)
