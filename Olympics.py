@@ -75,6 +75,11 @@ allDisc = os.listdir(cwd+"/indivDisc/")
 allDisc = [cwd+"/indivDisc/"+x for x in allDisc]
 indiv_disc_list = []
 
+def getName(abbrev):
+    names = ["Aeronautics","Alpine Skiing","Alpinism","Archery","Art Competitions","Athletics","Badminton","Baseball","Basketball","Basque Pelota","Beach Volleyball","Biathlon","Bobsleigh","Boxing","Canoeing","Cricket","Croquet","Cross Country Skiing","Curling","Cycling","Diving","Equestrianism","Fencing","Figure Skating","Football","Freestyle Skiing","Golf","Gymnastics","Handball","Hockey","Ice Hockey","Jeu De Paume","Judo","Lacrosse","Luge","Military Ski Patrol","Modern Pentathlon","Motorboating","Nordic Combined","Polo","Racquets","Rhythmic Gymnastics","Roque","Rowing","Rugby","Sailing","Shooting","Short Track Speed Skating","Skeleton","Ski Jumping","Snowboarding","Softball","Speed Skating","Swimming","Synchronized Swimming","Table Tennis","Taekwondo","Tennis","Trampolining","Triathlon","Tug-Of-War","Volleyball","Water Polo","Weightlifting","Wrestling"]
+    abbrevs=["AER","ASK","ALP","ARC","ART","ATH","BDM","BSB","BAS","PEL","BVO","BIA","BOB","BOX","CAN","CRI","CRO","CCS","CUR","CYC","DIV","EQU","FEN","FSK","FTB","FRS","GOL","GYM","HAN","HOK","ICH","JDP","JUD","LAX","LUG","MSP","MOP","MTB","NCO","POL","RAQ","RGY","ROQ","ROW","RUG","SAI","SHO","STK","SKE","SKJ","SNB","SOF","SSK","SWI","SYN","TTN","TKW","TEN","TMP","TRI","TOW","VOL","WAP","WLT","WRE"]
+    return names[abbrevs.index(abbrev)]
+
 #iterate through disciplines
 for disc in allDisc:
     f = open(disc,"r")
@@ -106,13 +111,13 @@ for disc in allDisc:
             else:
                 medal = (None,None)
             olymResults.append(medal)
-        results.append((event[0],event[1],event[2],olymResults[0][0],olymResults[0][1],olymResults[1][0],olymResults[1][1],olymResults[2][0],olymResults[2][1]))
+        results.append((event[0],getName(event[1]),event[2],olymResults[0][0],olymResults[1][0],olymResults[2][0],olymResults[0][1],olymResults[1][1],olymResults[2][1]))
         
 #==========WRITE RESULTS====================   
 print("Writing data...")        
 f = open(cwd+"/results.csv","w")
 writer = csv.writer(f)
-writer.writerow(("Year","Sport","Discipline","Gold Medalist","Gold Nation","Silver Medalist","Silver Nation","Bronze Medalist","Bronze Nation"))
+writer.writerow(("Year","Sport","Discipline","Gold Medalist","Silver Medalist","Bronze Medalist","Gold Nation","Silver Nation","Bronze Nation"))
 for values in results:
     writer.writerow(values)
 f.close()        
