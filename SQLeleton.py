@@ -28,7 +28,6 @@ def printTitle():
 	print("  ___/ / /_/ / / /__/  __/ /  __/ /_/ /_/ / / / /  ")
 	print(" /____/\___\_\/_____|___/_/\___/\__/\____/_/ /_/   ")
 	print("")
-	print("Alternate titles: Speed SQLating, DiSQLus...")
 	print("==============Version 1.0====8/15/2016=============\n")
 
 
