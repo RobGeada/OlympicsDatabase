@@ -7,3 +7,7 @@ Simply place the python script and `sports.html` into a directory, then run the 
 
 ###Usage: Querying the Dataset
 SQLeleton.py is a CLI that assists in generating SQL queries on the Olympic Dataset, with no restrictions on number of search parameters and parsing structure. Additionally, I've created CLI templates for some interesting searches to streamline the querying process.
+
+##Prereqs
+* PySpark
+* Inquirer
